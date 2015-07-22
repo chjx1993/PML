@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<!-- saved from url=(0014)about:internet -->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=9" >
+
+<title>Practical Machine Learning Project</title>
+
+<style type="text/css">
+body, td {
+   font-family: sans-serif;
+   background-color: white;
+   font-size: 12px;
+   margin: 8px;
+}
+
+tt, code, pre {
+   font-family: 'DejaVu Sans Mono', 'Droid Sans Mono', 'Lucida Console', Consolas, Monaco, monospace;
+}
+
+h1 { 
+   font-size:2.2em; 
+}
+
+h2 { 
+   font-size:1.8em; 
+}
+
+h3 { 
+   font-size:1.4em; 
+}
+
+h4 { 
+   font-size:1.0em; 
+}
+
+h5 { 
+   font-size:0.9em; 
+}
+
+h6 { 
+   font-size:0.8em; 
+}
+
+a:visited {
+   color: rgb(50%, 0%, 50%);
+}
+
+pre {	
+   margin-top: 0;
+   max-width: 95%;
+   border: 1px solid #ccc;
+   white-space: pre-wrap;
+}
+
+pre code {
+   display: block; padding: 0.5em;
+}
+
+code.r, code.cpp {
+   background-color: #F8F8F8;
+}
+
+table, td, th {
+  border: none;
+}
+
+blockquote {
+   color:#666666;
+   margin:0;
+   padding-left: 1em;
+   border-left: 0.5em #EEE solid;
+}
+
+hr {
+   height: 0px;
+   border-bottom: none;
+   border-top-width: thin;
+   border-top-style: dotted;
+   border-top-color: #999999;
+}
+
+@media print {
+   * { 
+      background: transparent !important; 
+      color: black !important; 
+      filter:none !important; 
+      -ms-filter: none !important; 
+   }
+
+   body { 
+      font-size:12pt; 
+      max-width:100%; 
+   }
+       
+   a, a:visited { 
+      text-decoration: underline; 
+   }
+
+   hr { 
+      visibility: hidden;
+      page-break-before: always;
+   }
+
+   pre, blockquote { 
+      padding-right: 1em; 
+      page-break-inside: avoid; 
+   }
+
+   tr, img { 
+      page-break-inside: avoid; 
+   }
+
+   img { 
+      max-width: 100% !important; 
+   }
+
+   @page :left { 
+      margin: 15mm 20mm 15mm 10mm; 
+   }
+     
+   @page :right { 
+      margin: 15mm 10mm 15mm 20mm; 
+   }
+
+   p, h2, h3 { 
+      orphans: 3; widows: 3; 
+   }
+
+   h2, h3 { 
+      page-break-after: avoid; 
+   }
+}
+
+</style>
+
+<!-- Styles for R syntax highlighter -->
+<style type="text/css">
+   pre .operator,
+   pre .paren {
+     color: rgb(104, 118, 135)
+   }
+
+   pre .literal {
+     color: rgb(88, 72, 246)
+   }
+
+   pre .number {
+     color: rgb(0, 0, 205);
+   }
+
+   pre .comment {
+     color: rgb(76, 136, 107);
+   }
+
+   pre .keyword {
+     color: rgb(0, 0, 255);
+   }
+
+   pre .identifier {
+     color: rgb(0, 0, 0);
+   }
+
+   pre .string {
+     color: rgb(3, 106, 7);
+   }
+</style>
+
+<!-- R syntax highlighter -->
+<script type="text/javascript">
+var hljs=new function(){function m(p){return p.replace(/&/gm,"&amp;").replace(/</gm,"&lt;")}function f(r,q,p){return RegExp(q,"m"+(r.cI?"i":"")+(p?"g":""))}function b(r){for(var p=0;p<r.childNodes.length;p++){var q=r.childNodes[p];if(q.nodeName=="CODE"){return q}if(!(q.nodeType==3&&q.nodeValue.match(/\s+/))){break}}}function h(t,s){var p="";for(var r=0;r<t.childNodes.length;r++){if(t.childNodes[r].nodeType==3){var q=t.childNodes[r].nodeValue;if(s){q=q.replace(/\n/g,"")}p+=q}else{if(t.childNodes[r].nodeName=="BR"){p+="\n"}else{p+=h(t.childNodes[r])}}}if(/MSIE [678]/.test(navigator.userAgent)){p=p.replace(/\r/g,"\n")}return p}function a(s){var r=s.className.split(/\s+/);r=r.concat(s.parentNode.className.split(/\s+/));for(var q=0;q<r.length;q++){var p=r[q].replace(/^language-/,"");if(e[p]){return p}}}function c(q){var p=[];(function(s,t){for(var r=0;r<s.childNodes.length;r++){if(s.childNodes[r].nodeType==3){t+=s.childNodes[r].nodeValue.length}else{if(s.childNodes[r].nodeName=="BR"){t+=1}else{if(s.childNodes[r].nodeType==1){p.push({event:"start",offset:t,node:s.childNodes[r]});t=arguments.callee(s.childNodes[r],t);p.push({event:"stop",offset:t,node:s.childNodes[r]})}}}}return t})(q,0);return p}function k(y,w,x){var q=0;var z="";var s=[];function u(){if(y.length&&w.length){if(y[0].offset!=w[0].offset){return(y[0].offset<w[0].offset)?y:w}else{return w[0].event=="start"?y:w}}else{return y.length?y:w}}function t(D){var A="<"+D.nodeName.toLowerCase();for(var B=0;B<D.attributes.length;B++){var C=D.attributes[B];A+=" "+C.nodeName.toLowerCase();if(C.value!==undefined&&C.value!==false&&C.value!==null){A+='="'+m(C.value)+'"'}}return A+">"}while(y.length||w.length){var v=u().splice(0,1)[0];z+=m(x.substr(q,v.offset-q));q=v.offset;if(v.event=="start"){z+=t(v.node);s.push(v.node)}else{if(v.event=="stop"){var p,r=s.length;do{r--;p=s[r];z+=("</"+p.nodeName.toLowerCase()+">")}while(p!=v.node);s.splice(r,1);while(r<s.length){z+=t(s[r]);r++}}}}return z+m(x.substr(q))}function j(){function q(x,y,v){if(x.compiled){return}var u;var s=[];if(x.k){x.lR=f(y,x.l||hljs.IR,true);for(var w in x.k){if(!x.k.hasOwnProperty(w)){continue}if(x.k[w] instanceof Object){u=x.k[w]}else{u=x.k;w="keyword"}for(var r in u){if(!u.hasOwnProperty(r)){continue}x.k[r]=[w,u[r]];s.push(r)}}}if(!v){if(x.bWK){x.b="\\b("+s.join("|")+")\\s"}x.bR=f(y,x.b?x.b:"\\B|\\b");if(!x.e&&!x.eW){x.e="\\B|\\b"}if(x.e){x.eR=f(y,x.e)}}if(x.i){x.iR=f(y,x.i)}if(x.r===undefined){x.r=1}if(!x.c){x.c=[]}x.compiled=true;for(var t=0;t<x.c.length;t++){if(x.c[t]=="self"){x.c[t]=x}q(x.c[t],y,false)}if(x.starts){q(x.starts,y,false)}}for(var p in e){if(!e.hasOwnProperty(p)){continue}q(e[p].dM,e[p],true)}}function d(B,C){if(!j.called){j();j.called=true}function q(r,M){for(var L=0;L<M.c.length;L++){if((M.c[L].bR.exec(r)||[null])[0]==r){return M.c[L]}}}function v(L,r){if(D[L].e&&D[L].eR.test(r)){return 1}if(D[L].eW){var M=v(L-1,r);return M?M+1:0}return 0}function w(r,L){return L.i&&L.iR.test(r)}function K(N,O){var M=[];for(var L=0;L<N.c.length;L++){M.push(N.c[L].b)}var r=D.length-1;do{if(D[r].e){M.push(D[r].e)}r--}while(D[r+1].eW);if(N.i){M.push(N.i)}return f(O,M.join("|"),true)}function p(M,L){var N=D[D.length-1];if(!N.t){N.t=K(N,E)}N.t.lastIndex=L;var r=N.t.exec(M);return r?[M.substr(L,r.index-L),r[0],false]:[M.substr(L),"",true]}function z(N,r){var L=E.cI?r[0].toLowerCase():r[0];var M=N.k[L];if(M&&M instanceof Array){return M}return false}function F(L,P){L=m(L);if(!P.k){return L}var r="";var O=0;P.lR.lastIndex=0;var M=P.lR.exec(L);while(M){r+=L.substr(O,M.index-O);var N=z(P,M);if(N){x+=N[1];r+='<span class="'+N[0]+'">'+M[0]+"</span>"}else{r+=M[0]}O=P.lR.lastIndex;M=P.lR.exec(L)}return r+L.substr(O,L.length-O)}function J(L,M){if(M.sL&&e[M.sL]){var r=d(M.sL,L);x+=r.keyword_count;return r.value}else{return F(L,M)}}function I(M,r){var L=M.cN?'<span class="'+M.cN+'">':"";if(M.rB){y+=L;M.buffer=""}else{if(M.eB){y+=m(r)+L;M.buffer=""}else{y+=L;M.buffer=r}}D.push(M);A+=M.r}function G(N,M,Q){var R=D[D.length-1];if(Q){y+=J(R.buffer+N,R);return false}var P=q(M,R);if(P){y+=J(R.buffer+N,R);I(P,M);return P.rB}var L=v(D.length-1,M);if(L){var O=R.cN?"</span>":"";if(R.rE){y+=J(R.buffer+N,R)+O}else{if(R.eE){y+=J(R.buffer+N,R)+O+m(M)}else{y+=J(R.buffer+N+M,R)+O}}while(L>1){O=D[D.length-2].cN?"</span>":"";y+=O;L--;D.length--}var r=D[D.length-1];D.length--;D[D.length-1].buffer="";if(r.starts){I(r.starts,"")}return R.rE}if(w(M,R)){throw"Illegal"}}var E=e[B];var D=[E.dM];var A=0;var x=0;var y="";try{var s,u=0;E.dM.buffer="";do{s=p(C,u);var t=G(s[0],s[1],s[2]);u+=s[0].length;if(!t){u+=s[1].length}}while(!s[2]);if(D.length>1){throw"Illegal"}return{r:A,keyword_count:x,value:y}}catch(H){if(H=="Illegal"){return{r:0,keyword_count:0,value:m(C)}}else{throw H}}}function g(t){var p={keyword_count:0,r:0,value:m(t)};var r=p;for(var q in e){if(!e.hasOwnProperty(q)){continue}var s=d(q,t);s.language=q;if(s.keyword_count+s.r>r.keyword_count+r.r){r=s}if(s.keyword_count+s.r>p.keyword_count+p.r){r=p;p=s}}if(r.language){p.second_best=r}return p}function i(r,q,p){if(q){r=r.replace(/^((<[^>]+>|\t)+)/gm,function(t,w,v,u){return w.replace(/\t/g,q)})}if(p){r=r.replace(/\n/g,"<br>")}return r}function n(t,w,r){var x=h(t,r);var v=a(t);var y,s;if(v){y=d(v,x)}else{return}var q=c(t);if(q.length){s=document.createElement("pre");s.innerHTML=y.value;y.value=k(q,c(s),x)}y.value=i(y.value,w,r);var u=t.className;if(!u.match("(\\s|^)(language-)?"+v+"(\\s|$)")){u=u?(u+" "+v):v}if(/MSIE [678]/.test(navigator.userAgent)&&t.tagName=="CODE"&&t.parentNode.tagName=="PRE"){s=t.parentNode;var p=document.createElement("div");p.innerHTML="<pre><code>"+y.value+"</code></pre>";t=p.firstChild.firstChild;p.firstChild.cN=s.cN;s.parentNode.replaceChild(p.firstChild,s)}else{t.innerHTML=y.value}t.className=u;t.result={language:v,kw:y.keyword_count,re:y.r};if(y.second_best){t.second_best={language:y.second_best.language,kw:y.second_best.keyword_count,re:y.second_best.r}}}function o(){if(o.called){return}o.called=true;var r=document.getElementsByTagName("pre");for(var p=0;p<r.length;p++){var q=b(r[p]);if(q){n(q,hljs.tabReplace)}}}function l(){if(window.addEventListener){window.addEventListener("DOMContentLoaded",o,false);window.addEventListener("load",o,false)}else{if(window.attachEvent){window.attachEvent("onload",o)}else{window.onload=o}}}var e={};this.LANGUAGES=e;this.highlight=d;this.highlightAuto=g;this.fixMarkup=i;this.highlightBlock=n;this.initHighlighting=o;this.initHighlightingOnLoad=l;this.IR="[a-zA-Z][a-zA-Z0-9_]*";this.UIR="[a-zA-Z_][a-zA-Z0-9_]*";this.NR="\\b\\d+(\\.\\d+)?";this.CNR="\\b(0[xX][a-fA-F0-9]+|(\\d+(\\.\\d*)?|\\.\\d+)([eE][-+]?\\d+)?)";this.BNR="\\b(0b[01]+)";this.RSR="!|!=|!==|%|%=|&|&&|&=|\\*|\\*=|\\+|\\+=|,|\\.|-|-=|/|/=|:|;|<|<<|<<=|<=|=|==|===|>|>=|>>|>>=|>>>|>>>=|\\?|\\[|\\{|\\(|\\^|\\^=|\\||\\|=|\\|\\||~";this.ER="(?![\\s\\S])";this.BE={b:"\\\\.",r:0};this.ASM={cN:"string",b:"'",e:"'",i:"\\n",c:[this.BE],r:0};this.QSM={cN:"string",b:'"',e:'"',i:"\\n",c:[this.BE],r:0};this.CLCM={cN:"comment",b:"//",e:"$"};this.CBLCLM={cN:"comment",b:"/\\*",e:"\\*/"};this.HCM={cN:"comment",b:"#",e:"$"};this.NM={cN:"number",b:this.NR,r:0};this.CNM={cN:"number",b:this.CNR,r:0};this.BNM={cN:"number",b:this.BNR,r:0};this.inherit=function(r,s){var p={};for(var q in r){p[q]=r[q]}if(s){for(var q in s){p[q]=s[q]}}return p}}();hljs.LANGUAGES.cpp=function(){var a={keyword:{"false":1,"int":1,"float":1,"while":1,"private":1,"char":1,"catch":1,"export":1,virtual:1,operator:2,sizeof:2,dynamic_cast:2,typedef:2,const_cast:2,"const":1,struct:1,"for":1,static_cast:2,union:1,namespace:1,unsigned:1,"long":1,"throw":1,"volatile":2,"static":1,"protected":1,bool:1,template:1,mutable:1,"if":1,"public":1,friend:2,"do":1,"return":1,"goto":1,auto:1,"void":2,"enum":1,"else":1,"break":1,"new":1,extern:1,using:1,"true":1,"class":1,asm:1,"case":1,typeid:1,"short":1,reinterpret_cast:2,"default":1,"double":1,register:1,explicit:1,signed:1,typename:1,"try":1,"this":1,"switch":1,"continue":1,wchar_t:1,inline:1,"delete":1,alignof:1,char16_t:1,char32_t:1,constexpr:1,decltype:1,noexcept:1,nullptr:1,static_assert:1,thread_local:1,restrict:1,_Bool:1,complex:1},built_in:{std:1,string:1,cin:1,cout:1,cerr:1,clog:1,stringstream:1,istringstream:1,ostringstream:1,auto_ptr:1,deque:1,list:1,queue:1,stack:1,vector:1,map:1,set:1,bitset:1,multiset:1,multimap:1,unordered_set:1,unordered_map:1,unordered_multiset:1,unordered_multimap:1,array:1,shared_ptr:1}};return{dM:{k:a,i:"</",c:[hljs.CLCM,hljs.CBLCLM,hljs.QSM,{cN:"string",b:"'\\\\?.",e:"'",i:"."},{cN:"number",b:"\\b(\\d+(\\.\\d*)?|\\.\\d+)(u|U|l|L|ul|UL|f|F)"},hljs.CNM,{cN:"preprocessor",b:"#",e:"$"},{cN:"stl_container",b:"\\b(deque|list|queue|stack|vector|map|set|bitset|multiset|multimap|unordered_map|unordered_set|unordered_multiset|unordered_multimap|array)\\s*<",e:">",k:a,r:10,c:["self"]}]}}}();hljs.LANGUAGES.r={dM:{c:[hljs.HCM,{cN:"number",b:"\\b0[xX][0-9a-fA-F]+[Li]?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+(?:[eE][+\\-]?\\d*)?L\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\b\\d+\\.(?!\\d)(?:i\\b)?",e:hljs.IMMEDIATE_RE,r:1},{cN:"number",b:"\\b\\d+(?:\\.\\d*)?(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"number",b:"\\.\\d+(?:[eE][+\\-]?\\d*)?i?\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"keyword",b:"(?:tryCatch|library|setGeneric|setGroupGeneric)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\.",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\.\\.\\d+(?![\\w.])",e:hljs.IMMEDIATE_RE,r:10},{cN:"keyword",b:"\\b(?:function)",e:hljs.IMMEDIATE_RE,r:2},{cN:"keyword",b:"(?:if|in|break|next|repeat|else|for|return|switch|while|try|stop|warning|require|attach|detach|source|setMethod|setClass)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"literal",b:"(?:NA|NA_integer_|NA_real_|NA_character_|NA_complex_)\\b",e:hljs.IMMEDIATE_RE,r:10},{cN:"literal",b:"(?:NULL|TRUE|FALSE|T|F|Inf|NaN)\\b",e:hljs.IMMEDIATE_RE,r:1},{cN:"identifier",b:"[a-zA-Z.][a-zA-Z0-9._]*\\b",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"<\\-(?!\\s*\\d)",e:hljs.IMMEDIATE_RE,r:2},{cN:"operator",b:"\\->|<\\-",e:hljs.IMMEDIATE_RE,r:1},{cN:"operator",b:"%%|~",e:hljs.IMMEDIATE_RE},{cN:"operator",b:">=|<=|==|!=|\\|\\||&&|=|\\+|\\-|\\*|/|\\^|>|<|!|&|\\||\\$|:",e:hljs.IMMEDIATE_RE,r:0},{cN:"operator",b:"%",e:"%",i:"\\n",r:1},{cN:"identifier",b:"`",e:"`",r:0},{cN:"string",b:'"',e:'"',c:[hljs.BE],r:0},{cN:"string",b:"'",e:"'",c:[hljs.BE],r:0},{cN:"paren",b:"[[({\\])}]",e:hljs.IMMEDIATE_RE,r:0}]}};
+hljs.initHighlightingOnLoad();
+</script>
+
+
+
+
+</head>
+
+<body>
+<h1>Practical Machine Learning Project</h1>
+
+<p>Jingxi Chen</p>
+
+<p>First, read in the data and do some exploratory analysis.</p>
+
+<pre><code class="r">data = read.csv(&#39;C:/Users/Ci/Desktop/R/coursera/practical machine learning/pml-training.csv&#39;,na.strings=c(&#39;NA&#39;,&quot;&quot;))
+test = read.csv(&#39;C:/Users/Ci/Desktop/R/coursera/practical machine learning/pml-testing.csv&#39;,na.strings=c(&#39;NA&#39;,&quot;&quot;))
+names(data)
+head(data)
+sapply(data,class)
+</code></pre>
+
+<p>I notice that there are hundreds of attributes but some of them are useless for prediction.
+Of course, I need to set up the caret package and create data partition.</p>
+
+<pre><code class="r">require(caret)
+</code></pre>
+
+<pre><code>## Loading required package: caret
+## Loading required package: lattice
+## Loading required package: ggplot2
+</code></pre>
+
+<pre><code class="r">inTrain = createDataPartition(y = data$classe, p = 0.6, list = F)
+training = data[inTrain,]
+testing = data[-inTrain,]
+</code></pre>
+
+<p>I only want to use part of the attributes. </p>
+
+<p>The numerical values of body moves are of interest for prediction.</p>
+
+<pre><code class="r">training = training[,which(sapply(data,  function( x) sum(is.na(x) )/length(x) )==0)]
+training = training[,-(1:5)]
+</code></pre>
+
+<p>I am not so sure whether I should keep the &#39;num_window&#39; variable. Let me do some visualization to explore it.</p>
+
+<pre><code class="r">require(ggplot2)
+ggplot(data = training, aes(y = num_window, x = classe,color = classe))+geom_boxplot()
+</code></pre>
+
+<p><img src="data:image/png;base64,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" alt="plot of chunk unnamed-chunk-4"/> 
+It seems to vary over different classe so I may keep it for now.</p>
+
+<pre><code class="r">ctr = trainControl(method=&#39;repeatedcv&#39;,repeats=3,number=5,classProbs = TRUE,savePre = T)
+fit = train(trControl = ctr,data = training, classe~.,method=&#39;rf&#39;)
+</code></pre>
+
+<pre><code>## Loading required package: randomForest
+## randomForest 4.6-10
+## Type rfNews() to see new features/changes/bug fixes.
+</code></pre>
+
+<pre><code class="r">fit
+</code></pre>
+
+<pre><code>## Random Forest 
+## 
+## 11776 samples
+##    54 predictor
+##     5 classes: &#39;A&#39;, &#39;B&#39;, &#39;C&#39;, &#39;D&#39;, &#39;E&#39; 
+## 
+## No pre-processing
+## Resampling: Cross-Validated (5 fold, repeated 3 times) 
+## 
+## Summary of sample sizes: 9421, 9421, 9420, 9422, 9420, 9421, ... 
+## 
+## Resampling results across tuning parameters:
+## 
+##   mtry  Accuracy   Kappa      Accuracy SD  Kappa SD   
+##    2    0.9910555  0.9886843  0.002106282  0.002666169
+##   28    0.9956408  0.9944858  0.001337415  0.001692119
+##   54    0.9921310  0.9900459  0.002175936  0.002752604
+## 
+## Accuracy was used to select the optimal model using  the largest value.
+## The final value used for the model was mtry = 28.
+</code></pre>
+
+<pre><code class="r">confusionMatrix( predict(fit,testing),testing$classe)
+</code></pre>
+
+<pre><code>## Confusion Matrix and Statistics
+## 
+##           Reference
+## Prediction    A    B    C    D    E
+##          A 2231    6    0    0    0
+##          B    0 1504    3    0    0
+##          C    0    8 1365    7    0
+##          D    0    0    0 1278    4
+##          E    1    0    0    1 1438
+## 
+## Overall Statistics
+##                                           
+##                Accuracy : 0.9962          
+##                  95% CI : (0.9945, 0.9974)
+##     No Information Rate : 0.2845          
+##     P-Value [Acc &gt; NIR] : &lt; 2.2e-16       
+##                                           
+##                   Kappa : 0.9952          
+##  Mcnemar&#39;s Test P-Value : NA              
+## 
+## Statistics by Class:
+## 
+##                      Class: A Class: B Class: C Class: D Class: E
+## Sensitivity            0.9996   0.9908   0.9978   0.9938   0.9972
+## Specificity            0.9989   0.9995   0.9977   0.9994   0.9997
+## Pos Pred Value         0.9973   0.9980   0.9891   0.9969   0.9986
+## Neg Pred Value         0.9998   0.9978   0.9995   0.9988   0.9994
+## Prevalence             0.2845   0.1935   0.1744   0.1639   0.1838
+## Detection Rate         0.2843   0.1917   0.1740   0.1629   0.1833
+## Detection Prevalence   0.2851   0.1921   0.1759   0.1634   0.1835
+## Balanced Accuracy      0.9992   0.9952   0.9977   0.9966   0.9985
+</code></pre>
+
+<pre><code class="r">answers = as.character(predict(fit,test))
+</code></pre>
+
+<p>I use repeated cross validation with the codes above and
+I tried out different method to train the model and I figure out random forest does the best job. I expect it can predict with 99% or higher accuracy on new data set base on its performance on validation set.</p>
+
+</body>
+
+</html>
+

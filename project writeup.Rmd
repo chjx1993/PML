@@ -1,0 +1,48 @@
+Practical Machine Learning Project
+========================================================
+
+Jingxi Chen
+
+
+
+First, read in the data and do some exploratory analysis.
+```{r,results='hide'}
+data = read.csv('C:/Users/Ci/Desktop/R/coursera/practical machine learning/pml-training.csv',na.strings=c('NA',""))
+test = read.csv('C:/Users/Ci/Desktop/R/coursera/practical machine learning/pml-testing.csv',na.strings=c('NA',""))
+names(data)
+head(data)
+sapply(data,class)
+```
+I notice that there are hundreds of attributes but some of them are useless for prediction.
+Of course, I need to set up the caret package and create data partition.
+```{r}
+require(caret)
+inTrain = createDataPartition(y = data$classe, p = 0.6, list = F)
+training = data[inTrain,]
+testing = data[-inTrain,]
+```
+I only want to use part of the attributes. 
+
+The numerical values of body moves are of interest for prediction.
+
+```{r}
+training = training[,which(sapply(data,  function( x) sum(is.na(x) )/length(x) )==0)]
+training = training[,-(1:5)]
+```
+I am not so sure whether I should keep the 'num_window' variable. Let me do some visualization to explore it.
+
+```{r}
+require(ggplot2)
+ggplot(data = training, aes(y = num_window, x = classe,color = classe))+geom_boxplot()
+
+```
+It seems to vary over different classe so I may keep it for now.
+```{r}
+ctr = trainControl(method='repeatedcv',repeats=3,number=5,classProbs = TRUE,savePre = T)
+fit = train(trControl = ctr,data = training, classe~.,method='rf')
+fit
+confusionMatrix( predict(fit,testing),testing$classe)
+answers = as.character(predict(fit,test))
+```
+I use repeated cross validation with the codes above and
+I tried out different method to train the model and I figure out random forest does the best job. I expect it can predict with 99% or higher accuracy on new data set base on its performance on validation set.
